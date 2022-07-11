@@ -1,0 +1,60 @@
+<nav>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+        margin: 0px ;
+      
+    }
+    .topnav-centered {
+        padding-left: 200px;
+        font-family: Roboto; 
+    
+    }
+    .topnav {
+      overflow: hidden;
+      background-color: #272727;
+      font-family: Roboto; 
+    
+    }
+    
+    .topnav a {
+      float: left;
+      color: #CCCCCC;
+      text-align: center;
+      padding:30px 30px 30px 30px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    
+    .topnav a:hover {
+      background-color: #FFFFFF;
+      color: black;
+    }
+    
+    .topnav a.active {
+      background-color: #f02a50;
+      color: white;
+    }
+    .logo img{
+        position: absolute;
+        margin-top: 0px;
+        margin-left: 10px;
+    }
+    </style>
+    </head>
+    <body>
+        {% load static %}
+        <div class="logo"><a href = "http://127.0.0.1:8000/"><img src = "{% static 'black songnote logo4.png' %}" alt="Songnote"></a></div>
+    <div class="topnav">
+        
+        <div class="topnav-centered">
+            <a href="http://127.0.0.1:8000/" class="active">home</a>
+            <a href="#songs">menu</a>
+              <a href="http://127.0.0.1:8000/profile">profile</a>
+              
+    </div>
+    
+    </nav>
+    </div>
+    </body>
+    

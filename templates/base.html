@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<Title>Hunger Pang</Title>
+
+<head>
+
+{% include "navbar.html" %}	
+	<link rel="stylesheet" href = "{% static 'mainstyle.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+	<style>
+	</style>
+
+
+	</head>
+
+	<body>
+    <script type="text/javascript" src={% static 'cart.js' %}></script>
+	
+	<div>{% block content %}
+	replace me
+	</div>{% endblock %}
+	</body>
+
+</html>
