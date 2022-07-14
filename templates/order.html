@@ -5,7 +5,7 @@
 {% block content %}
 
 <h1>Starter Order</h1>
-    <div class = 'form'> <form method="POST" class="form-group">
+    <div class="mb-3"> <form method="POST" class="form-group">
 	{% csrf_token %}
 	{{ starter_order_form |crispy }}
 	<button type="submit" class="btn btn-success">Add to basket</button>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Create an Account{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Log In</h1>
+<form method="post" class="mb-3">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Log In</button>
+  <p>Forgot your password? <a href="http://127.0.0.1:8000/password_reset">Reset password</a></p>
+
+</form>
+{% endblock %}
