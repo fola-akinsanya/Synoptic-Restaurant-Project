@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cart</title>
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+    <h1>Cart</h1>
+    {% for item in cart %}
+    <li>{{item.order_total}} {{item.customer}} {{item.order_status}} {{item.order_items.count}} {{item.order_items.starter}}
+
+    </li>
+    {% endfor %}
+    {% for item in starter %}
+    <li>{{item.starter}} {{item.price}}</li>
+    {% endfor %}
+
+    <p><a href="{% url 'logout' %}">Logout</a></p>
+    {% else %}
+    <h1>Welcome Guest</h1>
+    <p>Please register or login to get started</p>
+    <button type="button" class="btn btn-secondary" href="{% url 'register' %}">Register</button>
+    <button type="button" class="btn btn-secondary" href="{% url 'login' %}">Login</button>
+    {% endif %}
+  </body>
+</html>
+{% endblock %}
