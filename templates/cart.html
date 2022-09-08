@@ -9,14 +9,14 @@
   <body>
     {% if user.is_authenticated %}
     <h1>Cart</h1>
-    {% for item in cart %}
-    <li>{{item.order_total}} {{item.customer}} {{item.order_status}} {{item.order_items.count}} {{item.order_items.starter}}
-
-    </li>
-    {% endfor %}
     {% for item in starter %}
-    <li>{{item.starter}} {{item.price}}</li>
+    <ul class="list-group">
+    <li class="list-group-item">{{item.starter}} {{item.price}}</li>
+    </ul>
     {% endfor %}
+    <ul class="list-group">
+      <li class="list-group-item">Cart Total: £{{cart_total}}</li>
+      </ul>
 
     <p><a href="{% url 'logout' %}">Logout</a></p>
     {% else %}

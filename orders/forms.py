@@ -8,7 +8,7 @@ from django.forms import CheckboxSelectMultiple
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field, Div, Submit
 
-from orders.models import Cart, StarterMenu
+from orders.models import Order, StarterMenu
 
 class MyOrderModelChoiceField(ModelMultipleChoiceField):
 
@@ -20,18 +20,18 @@ class OrderForm(forms.ModelForm):
         if 'customer' in kwargs:
             self._customer = kwargs.pop('customer')
         super(OrderForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper(self)
-        self.helper.form_method = 'post' # get or post
-        self.helper.layout = Layout(
-            Div('div_id_order_items', css_class="d-inline p-2 bg-primary text-white"),
-        ) 
+        # self.helper = FormHelper(self)
+        # self.helper.form_method = 'post' # get or post
+        # self.helper.layout = Layout(
+        #     Div('div_id_order_items', css_class="d-inline p-2 bg-primary text-white"),
+        # ) 
 
     order_items = MyOrderModelChoiceField(queryset=StarterMenu.objects.all(), widget = forms.CheckboxSelectMultiple)
     # order_items = forms.Select(choices=StarterMenu.objects.all())
 
     class Meta:
-        model = Cart
-        exclude = ['customer', 'order_status', 'order_total']
+        model = Order
+        exclude = ['customer']
         fields = ['order_items']
 
 
@@ -49,4 +49,3 @@ class OrderForm(forms.ModelForm):
             inst.save()
             self.save_m2m()
         return inst
-

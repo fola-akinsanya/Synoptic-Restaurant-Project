@@ -19,7 +19,8 @@ from django.contrib.auth import views as auth_views
 
 
 from user.views import userPageView
-from orders.views import order, index, cart
+from orders.views import order, index
+from cart.views import cart
 from register.views import register_view, login, change_password_view, edit_profile_view
 
 urlpatterns = [

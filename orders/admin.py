@@ -1,30 +1,16 @@
 from django.contrib import admin
-from .models import Cart
+from .models import Order
+from cart.admin import CartInline
 
-# class OrdersInline(admin.TabularInline):
-#     model = Cart.order_items.through
+class OrderInline(admin.TabularInline):
+    model = Order.order_items.through
 
-# class StarterOrderAdmin(admin.ModelAdmin):
-#     inlines = (OrdersInline,)
-#     list_display = ('customer', 'starter_order')
- 
-# admin.site.register(StarterOrder, StarterOrderAdmin)
-
-
-
-
-class CartInline(admin.TabularInline):
-    model = Cart.order_items.through
-
-class CartAdmin(admin.ModelAdmin):
+class OrderAdmin(admin.ModelAdmin):
     inlines = [
         CartInline,
     ]
-    # exclude = ('order_items',)
-
-admin.site.register(Cart, CartAdmin)
-
-
+     
+admin.site.register(Order, OrderAdmin)
 
 # class CartAdmin(admin.ModelAdmin):
 #     list_display= ('customer', 'order_status', 'order_total', 'order_items')
