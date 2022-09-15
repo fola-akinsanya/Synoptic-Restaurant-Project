@@ -8,13 +8,24 @@
   </head>
   <body>
     {% if user.is_authenticated %}
-    <h1>Welcome {{user.username}}!</h1>
-    <p><a href="{% url 'logout' %}">Logout</a></p>
+    <div class="container-fluid">
+      <h1>Welcome {{user.username}}!</h1>
+    </div>
+  <div class="container-fluid">
+      <div class="container-fluid">
+    <a type="button" href="{% url 'logout' %}" class="btn btn-secondary">Logout</a>
+  </div>
+  </div>
     {% else %}
+    <div class="container-fluid">
+
     <h1>Welcome Guest</h1>
+    </div>
+    <div class="container-fluid">
     <p>Please register or login to get started</p>
-    <button type="button" class="btn btn-secondary" href="{% url 'register' %}">Register</button>
-    <button type="button" class="btn btn-secondary" href="{% url 'login' %}">Login</button>
+    <a class="btn btn-secondary" href="{% url 'register' %}">Register</a>
+    <a class="btn btn-secondary" href="{% url 'login' %}">Login</a>
+    </div>
     {% endif %}
   </body>
 </html>

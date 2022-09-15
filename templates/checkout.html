@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="container-fluid">
+<h1>Checkout</h1>
+</div>
+<div class="container-fluid">
+	{% csrf_token %}
+    <a>Total to pay: £{{cart.cart_total}}</a>
+    {% if cart.cart_total == 0 %}
+    <a>Please add items to your basket to get started!</a>
+    {% else %}
+	{% crispy checkout_form %}	
+    </div>
+
+    {% endif %}
+</div>
+
+{% endblock %}

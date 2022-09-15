@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Checkout Confirmation</title>
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+    <div class="container-fluid">
+
+    <h1>Thanks for your order {{user.username}}!</h1>
+    <a>Your order has been received, please keep an eye on your active orders tab for updates on your order's progress!</a>
+</div>
+  </div>
+  <div class="container-fluid">
+    <a type="button" class="btn btn-secondary" href="{% url 'active-orders' %}">Active Orders</a>
+    <a type="button" class="btn btn-secondary" href="{% url 'logout' %}">Logout</a>
+  </div>
+    {% else %}
+    <div class="container-fluid">
+
+    <h1>Welcome Guest</h1>
+    </div>
+    <div class="container-fluid">
+    <p>Please register or login to get started</p>
+    <a type="button" class="btn btn-secondary" href="{% url 'register' %}">Register</button></form>
+    <a type="button" class="btn btn-secondary" href="{% url 'login' %}">Login</button></form>
+
+    {% endif %}
+  </body>
+</html>
+{% endblock %}

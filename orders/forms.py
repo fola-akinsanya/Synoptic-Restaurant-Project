@@ -1,32 +1,60 @@
+from audioop import reverse
+from email.mime import image
 from re import template
-from tkinter import Widget
+from tkinter import Label, Widget
 from django import forms
-from menu.models import StarterMenu
+from menu.models import MainMenu
 
 from django.forms import ModelChoiceField, ModelMultipleChoiceField
 from django.forms import CheckboxSelectMultiple
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Field, Div, Submit
+from crispy_forms.layout import Layout, Field, Div, Submit, MultiWidgetField
+from django.urls import reverse_lazy
+from django.utils.safestring import mark_safe
 
-from orders.models import Order, StarterMenu
+
+from orders.models import Order, MainMenu
 
 class MyOrderModelChoiceField(ModelMultipleChoiceField):
 
+    @mark_safe
     def label_from_instance(self, obj):
-        return f'({obj.starter} {obj.price})'
+
+        if obj.stock > 0:
+            return (f'{obj.menu_item} £{obj.price}')
+            # return (f'{obj.menu_item} {obj.price}' "<img src='%s'/>" % obj.image.url)
+
+        else:
+            obj.price == 0
+            return (f'{obj.menu_item} SOLD OUT')
 
 class OrderForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         if 'customer' in kwargs:
             self._customer = kwargs.pop('customer')
-        super(OrderForm, self).__init__(*args, **kwargs)
-        # self.helper = FormHelper(self)
-        # self.helper.form_method = 'post' # get or post
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'POST' # get or post
+        self.helper.add_input(Submit('submit', 'Add to basket'))
         # self.helper.layout = Layout(
-        #     Div('div_id_order_items', css_class="d-inline p-2 bg-primary text-white"),
+        #     Field('order_items', wrapper_class="form-check"),
+        # )
+            # Label('order_items', attrs= ({
+            #     'id': 'id_order_items_3',
+            #     'class': 'form-check-label'
+            # }))
+            # MultiWidgetField(
+            # 'order_items',
+            # attrs=(
+            #     {'style': 'width: 20px;'},
+            #     {'class': 'form-check-input'}
+            # ),
+        # )
+        #     Field(css_class="form-check"),
         # ) 
 
-    order_items = MyOrderModelChoiceField(queryset=StarterMenu.objects.all(), widget = forms.CheckboxSelectMultiple)
+
+    order_items = MyOrderModelChoiceField(queryset=MainMenu.objects.all(), widget = forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
     # order_items = forms.Select(choices=StarterMenu.objects.all())
 
     class Meta:

@@ -2,14 +2,14 @@ from tkinter import Menu
 from django.contrib import admin
 
 from orders.admin import OrderInline
-from .models import StarterMenu
+from .models import MainMenu
 
 # Register your models here.
-class StarterMenuAdmin(admin.ModelAdmin):
+class MainMenuAdmin(admin.ModelAdmin):
     inlines = [
         OrderInline,
     ]
     
-    list_display = ('starter', 'price')
+    list_display = ('menu_item', 'price', 'image', 'stock')
  
-admin.site.register(StarterMenu, StarterMenuAdmin)
+admin.site.register(MainMenu, MainMenuAdmin)

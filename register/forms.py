@@ -17,7 +17,7 @@ class EditProfileForm(UserChangeForm):
 	def __init__(self, *args, **kwargs):
 		super(UserChangeForm, self).__init__(*args, **kwargs)
 		self.fields['username'].widget.attrs['class'] = 'form-control'
-		self.fields['password'].help_text= "Click <a href=\"../change_password\"> Here</a> to change your Password."
+		self.fields['password'].help_text= "Click <a href=\"../change-password\"> Here</a> to change your Password."
 
 
 

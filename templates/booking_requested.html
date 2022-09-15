@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Booking Requested{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% csrf_token %}
+<H1>Booking Requested</H1>
+
+<p>Thank you for requesting to book a table!</p>
+<p>We will contact you via your registered email to confirm your booking</p>
+
+{% endblock %}

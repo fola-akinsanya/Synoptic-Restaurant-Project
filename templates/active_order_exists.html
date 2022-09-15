@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Active Order Exists{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% csrf_token %}
+<H1>Oops!</H1>
+
+<p>Looks like you already have an active order!</p>
+<p>If you would like to make any changes to your current order, please call or email the restaurant.</p>
+
+{% endblock %}

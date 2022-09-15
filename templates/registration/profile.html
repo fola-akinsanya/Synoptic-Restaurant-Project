@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Profile{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% csrf_token %}
+{% if user.is_authenticated %}
+<h1>Hi {{user.username}}</h1>
+<p>Username: {{ user }}</p>
+<p> First Name: {{user.first_name}}</p>
+<p> Last Name: {{user.last_name}}</p>
+<p> E-mail: {{user.email}}</p>
+<a type="button" class="btn btn-secondary" href="{% url 'edit-profile' %}">✍🏾 Edit Profile</a>
+
+{% else %}
+<h1>Welcome Guest</h1>
+<p>Please register or login to get started</p>
+<form action="register">
+<button class="btn btn-secondary">Register</button></form>
+<br>
+<form action="login">
+<button class="btn btn-secondary">Login</button></form>
+{% endif %}
+
+{% endblock %}

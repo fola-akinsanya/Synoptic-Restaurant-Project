@@ -9,21 +9,31 @@
   <body>
     {% if user.is_authenticated %}
     <h1>Cart</h1>
-    {% for item in starter %}
+    {% for order in orders %}
+    {% for item in order.order_items.all %} 
     <ul class="list-group">
-    <li class="list-group-item">{{item.starter}} {{item.price}}</li>
+    <li > {{item.menu_item}} {{item.price}}
+    <a href="{% url 'delete-order' order.id item.id %}">🗑</a>
+  </li>
     </ul>
     {% endfor %}
+    {% endfor %}
     <ul class="list-group">
-      <li class="list-group-item">Cart Total: £{{cart_total}}</li>
-      </ul>
+      <li class="list-group-item">Cart Total: £{{cart_total}}
+      </li> 
+    </ul>
+    {% if cart_total == 0 %}
+    <a>Please add items to your basket to get started!</a>
+    {% else %}
+    <a type="button" class="btn btn-secondary" href="{% url 'checkout' %}">Checkout</a>
+    {% endif %}
 
-    <p><a href="{% url 'logout' %}">Logout</a></p>
+
     {% else %}
     <h1>Welcome Guest</h1>
     <p>Please register or login to get started</p>
-    <button type="button" class="btn btn-secondary" href="{% url 'register' %}">Register</button>
-    <button type="button" class="btn btn-secondary" href="{% url 'login' %}">Login</button>
+    <a type="button" class="btn btn-secondary" href="{% url 'register' %}">Register</a>
+    <a type="button" class="btn btn-secondary" href="{% url 'login' %}">Login</a>
     {% endif %}
   </body>
 </html>

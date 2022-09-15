@@ -1,0 +1,47 @@
+.bg-dark {
+    background-color: #011627!important;
+    /* color: #011627; */
+}
+
+.carousel {
+    width:100%;
+    height:50%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+.btn-secondary, .btn-success {
+    color: #fff;
+    background-color: #2ec4b6;
+    border-color: #2ec4b6;
+}
+
+.btn-secondary:hover, .btn-success:hover {
+    color: #fff;
+    background-color: #ff9f1c;
+    border-color: #ff9f1c;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #ff9f1c;
+    border-color: #ff9f1c;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #2ec4b6;
+    border-color: #2ec4b6;
+}
+
+.dropdown-menu, h1, controls, label, .btn-secondary, .btn, .navbar, input, p, li, a, h2, h3, h4 {
+    font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif!important;
+}
+
+.dropdown-item:hover {
+    background-color: #2ec4b6;
+}
+
+label {
+    display: inherit;
+}
+

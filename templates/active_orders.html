@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Active Orders</title>
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+    <h1>Active Orders</h1>
+    {% if checkout == 0 %}
+    <a>You do not have any active orders</a>
+    {% else %}
+    <h4>Order Status: {{cart.cart_status}}</h4>
+    <h4>Items Ordered</h4>
+    {% for order in orders %}
+    {% for item in order.order_items.all %} 
+    <ul class="list-group">
+    <li > {{item.menu_item}} {{item.price}}
+  </li>
+    </ul>
+    {% endfor %}
+    {% endfor %}
+    <ul class="list-group">
+      <li class="list-group-item">Order Total: £{{cart.cart_total}}
+      </li> 
+    </ul>
+
+    {% endif %}
+
+    {% else %}
+    <h1>Welcome Guest</h1>
+    <p>Please register or login to get started</p>
+    <button type="button" class="btn btn-secondary" href="{% url 'register' %}">Register</button>
+    <button type="button" class="btn btn-secondary" href="{% url 'login' %}">Login</button>
+    {% endif %}
+  </body>
+</html>
+{% endblock %}
