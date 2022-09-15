@@ -1,4 +1,3 @@
-<ul class=""navbar navbar-light bg-light"">
     {% load static %}
 
     {% if user.is_authenticated %}
@@ -27,6 +26,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
             <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'active-orders' %}">Active Orders</a>
               <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
               <a class="dropdown-item" href="{% url 'edit-profile' %}">Edit Profile</a>
               <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>

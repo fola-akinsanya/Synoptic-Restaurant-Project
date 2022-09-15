@@ -8,25 +8,32 @@
   </head>
   <body>
     {% if user.is_authenticated %}
+    <div class="container-fluid">
     <h1>Active Orders</h1>
     {% if checkout == 0 %}
     <a>You do not have any active orders</a>
     {% else %}
     <h4>Order Status: {{cart.cart_status}}</h4>
     <h4>Items Ordered</h4>
+
     {% for order in orders %}
-    {% for item in order.order_items.all %} 
+    {% for item in order.order_items.all %}
+    <div class="container-fluid"> 
     <ul class="list-group">
     <li > {{item.menu_item}} {{item.price}}
   </li>
     </ul>
+    </div>
     {% endfor %}
-    {% endfor %}
+    {% endfor %}    
+</div>
+
+    <div class="container-fluid">
     <ul class="list-group">
       <li class="list-group-item">Order Total: £{{cart.cart_total}}
       </li> 
     </ul>
-
+    </div>
     {% endif %}
 
     {% else %}

@@ -6,14 +6,17 @@
 {% block content %}
 {% csrf_token %}
 {% if user.is_authenticated %}
+<div class="container-fluid">
 <h1>Hi {{user.username}}</h1>
 <p>Username: {{ user }}</p>
 <p> First Name: {{user.first_name}}</p>
 <p> Last Name: {{user.last_name}}</p>
 <p> E-mail: {{user.email}}</p>
 <a type="button" class="btn btn-secondary" href="{% url 'edit-profile' %}">✍🏾 Edit Profile</a>
+</div>
 
 {% else %}
+<div class="container-fluid">
 <h1>Welcome Guest</h1>
 <p>Please register or login to get started</p>
 <form action="register">
@@ -21,6 +24,7 @@
 <br>
 <form action="login">
 <button class="btn btn-secondary">Login</button></form>
+</div>
 {% endif %}
 
 {% endblock %}

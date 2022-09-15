@@ -8,32 +8,45 @@
   </head>
   <body>
     {% if user.is_authenticated %}
+    <div class="container-fluid">
+
+    <div class="container-fluid">
     <h1>Cart</h1>
+    </div>
     {% for order in orders %}
     {% for item in order.order_items.all %} 
+    <div class="container-fluid">
     <ul class="list-group">
     <li > {{item.menu_item}} {{item.price}}
     <a href="{% url 'delete-order' order.id item.id %}">🗑</a>
   </li>
     </ul>
+    </div>
     {% endfor %}
     {% endfor %}
     <ul class="list-group">
       <li class="list-group-item">Cart Total: £{{cart_total}}
       </li> 
     </ul>
+</div>
     {% if cart_total == 0 %}
     <a>Please add items to your basket to get started!</a>
     {% else %}
+    <div class="container-fluid">
+
     <a type="button" class="btn btn-secondary" href="{% url 'checkout' %}">Checkout</a>
+    </div>
     {% endif %}
 
 
     {% else %}
+    <div class="container-fluid">
+
     <h1>Welcome Guest</h1>
     <p>Please register or login to get started</p>
     <a type="button" class="btn btn-secondary" href="{% url 'register' %}">Register</a>
     <a type="button" class="btn btn-secondary" href="{% url 'login' %}">Login</a>
+    </div>
     {% endif %}
   </body>
 </html>

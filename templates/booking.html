@@ -4,8 +4,10 @@
 
 {% block content %}
 
+<div class="container-fluid">
 
 <h1>Book Table</h1>
 {% csrf_token %}
 {% crispy booking_form %}
+</div>
 {% endblock %}
