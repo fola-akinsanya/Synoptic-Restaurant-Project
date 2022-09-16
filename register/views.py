@@ -20,7 +20,6 @@ def register_view(request):
 		if register_form.is_valid():
 			new_user= register_form.save()
 			new_user = register_form.save()
-			#messages.info(request, "Thanks for registering. You are now logged in.")
 			new_user = authenticate(username=register_form.cleaned_data['username'],
             	password=register_form.cleaned_data['password1'],
             	)

@@ -36,37 +36,14 @@ class OrderForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_method = 'POST' # get or post
         self.helper.add_input(Submit('submit', 'Add to basket'))
-        # self.helper.layout = Layout(
-        #     Field('order_items', wrapper_class="form-check"),
-        # )
-            # Label('order_items', attrs= ({
-            #     'id': 'id_order_items_3',
-            #     'class': 'form-check-label'
-            # }))
-            # MultiWidgetField(
-            # 'order_items',
-            # attrs=(
-            #     {'style': 'width: 20px;'},
-            #     {'class': 'form-check-input'}
-            # ),
-        # )
-        #     Field(css_class="form-check"),
-        # ) 
-
 
     order_items = MyOrderModelChoiceField(queryset=MainMenu.objects.all(), widget = forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
-    # order_items = forms.Select(choices=StarterMenu.objects.all())
 
     class Meta:
         model = Order
         exclude = ['customer']
         fields = ['order_items']
 
-
-    # def __init__(self, *args, **kwargs):
-    #     if 'customer' in kwargs:
-    #         self._customer = kwargs.pop('customer')
-    #     super(OrderForm, self).__init__(*args, **kwargs)
             
     def save(self, commit=True):
         inst = super(OrderForm, self).save(commit=False)

@@ -19,7 +19,6 @@ def cart(request):
 
             for o in orders:
                 for i in o.order_items.all():
-                    print(o.order_items.all())
                     cart_total += i.price
         
             user_cart.cart_total = cart_total
